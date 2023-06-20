@@ -8,7 +8,7 @@ def tex_recognition(file_path, text_file_name='results.txt'):
     return result
 
 def generate_recipes(prompt):
-    openai.api_key = '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'
+    openai.api_key = 'Your_api'
     model_engine = 'text-davinci-003'
 
     completion = openai.Completion.create(
