@@ -1,14 +1,20 @@
 import os
 import easyocr
 import openai
+from config import API_KEY
 
 def tex_recognition(file_path, text_file_name='results.txt'):
     reader = easyocr.Reader(['en', 'ru'])
     result = reader.readtext(file_path, detail=0, paragraph=True)
+
+    with open(text_file_name, 'w') as file:
+        for line in result:
+            file.write(f'{line}/n\n')
+
     return result
 
 def generate_recipes(prompt):
-    openai.api_key = 'Your_api'
+    openai.api_key = API_KEY
     model_engine = 'text-davinci-003'
 
     completion = openai.Completion.create(
